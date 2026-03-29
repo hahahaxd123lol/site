@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Half Price Orders</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .order-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .order-subtitle {
+      color: #cccccc;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .order-layout {
+      display: block;
+      max-width: 1000px;
+      margin: 0 auto;
+      gap: 0;
+    }
+
+    .order-form-card {
+      background: rgba(0, 0, 0, 0.9);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: var(--red-glow);
+      border: 1px solid rgba(255, 0, 0, 0.3);
+      color: white;
+    }
+
+    .form-section {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .form-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .form-section-title {
+      color: var(--primary);
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-grid {
+      display: block;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 20px;
+    }
+
+    .how-it-works-card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      height: fit-content;
+      position: sticky;
+      top: 20px;
+    }
+
+    .how-it-works-card h3 {
+      color: var(--primary);
+      margin-bottom: 25px;
+      font-size: 20px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .step {
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      background: var(--primary);
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .step-content h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .step-content p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    .guarantee {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .guarantee-icon {
+      font-size: 24px;
+    }
+
+    .guarantee-text strong {
+      color: #333;
+    }
+
+    .guarantee-text {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+      .order-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .how-it-works-card {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div style="min-height: calc(100vh - 200px); padding: 80px 20px;">
+    <div class="container">
+      <div class="order-header">
+        <h2 class="section-title">📦 Submit Your Half Price Order</h2>
+        <p class="order-subtitle">Get any product at 50% off! We'll contact you to finalize the details.</p>
+      </div>
+      
+      <!-- Main Form + How It Works (stacked vertically) -->
+        <div class="order-form-card" style="width: 100%; max-width: 700px; margin: 0 auto 30px; display: block;">
+          <form id="orderForm">
+            <!-- Product Information -->
+            <div class="form-section">
+              <h3 class="form-section-title">🛍️ Product Details</h3>
+              <div class="form-group">
+                <label>Product Links * (add up to 5)</label>
+                <div id="productLinksContainer">
+                  <div class="product-link-row">
+                    <input
+                      type="url"
+                      class="product-link-input"
+                      placeholder="https://example.com/product"
+                      required
+                    >
+                  </div>
+                </div>
+                <button type="button" id="addProductBtn" class="btn btn-secondary">+ Add Product</button>
+                <small>Enter product links (up to 5 maximum)</small>
+              </div>
+            </div>
+
+            <!-- Order Preferences -->
+            <div class="form-section">
+              <h3 class="form-section-title">⚙️ Order Preferences</h3>
+              <div class="form-grid">
+
+                <div class="form-group">
+                  <label for="techOrder">Is this a tech order? (iPhone, laptop, headphones etc - one size)</label>
+                  <select id="techOrder" name="techOrder">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                  </select>
+                </div>
+                <div class="form-group" id="sizeGroup">
+                  <label for="size">Size</label>
+                  <input
+                    type="text"
+                    id="size"
+                    name="size"
+                    placeholder="e.g., Medium, 10, XL"
+                  >
+                </div>
+                <div class="form-group">
+
+                  <label for="paymentMethod">Payment Method *</label>
+<select id="paymentMethod" name="paymentMethod" required>
+                    <option value="">Select method</option>
+                    <option value="bank-transfer">Bank Transfer</option>
+                    <option value="crypto">Crypto</option>
+                    <option value="cash">Cash (pls no unless i know you)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Personal Information -->
+
+            <div class="form-section">
+              <h3 class="form-section-title">👤 Personal Information</h3>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="name">Full Name *</label>
+                  <input type="text" id="name" name="name" placeholder="Your full name" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="preferredContact">Best way to contact you *</label>
+                  <select id="preferredContact" name="preferredContact" required>
+                    <option value="">Select contact method</option>
+                    <option value="email">Email</option>
+
+
+                  <option value="discord">Discord</option>
+                  <option value="instagram">Instagram</option>
+                  <option value="snapchat">Snapchat</option>
+                  <option value="telegram">Telegram</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contactDetails">Contact Details *</label>
+                <input type="text" id="contactDetails" name="contactDetails" placeholder="Enter your email/phone/username based on selection above" required>
+              </div>
+            </div>
+
+            <!-- Delivery Address -->
+            <div class="form-section">
+              <h3 class="form-section-title">📍 Delivery Address</h3>
+              <div class="form-group">
+
+                <p><strong>Delivery:</strong> We'll discuss delivery address when I contact you.</p>
+              </div>
+            </div>
+
+
+
+            <!-- Status Messages -->
+            <div id="loading" class="loading hidden">
+              <div class="loader"></div>
+              <p>Processing your request...</p>
+            </div>
+
+            <div id="errorMessage" class="alert alert-error hidden">
+              <p id="errorText"></p>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary submit-btn" id="submitBtn">
+              Submit Request
+            </button>
+          </form>
+        </div>
+
+        <!-- How It Works (full width below form) -->
+        <div class="how-it-works-card" style="width: 100%; max-width: 900px; margin: 0 auto;">
+          <h3>🚀 How It Works</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Enter Product Link</h4>
+                <p>Paste the link to any product you want at 50% off</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Fill Your Details</h4>
+                <p>Provide your information and preferred payment method</p>
+              </div>
+            </div>s 
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Submit Your Order</h4>
+                <p>Click submit and we'll review your request</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h4>Get Your Deal</h4>
+                <p>We'll contact you to arrange your 50% discount!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="guarantee">
+            <div class="guarantee-icon">🛡️</div>
+            <div class="guarantee-text">
+              <strong>100% Secure</strong><br>
+              Your information is protected and only used for your order
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2026 Half Price Hub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
