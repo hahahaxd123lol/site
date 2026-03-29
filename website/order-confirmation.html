@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed - Half Price Hub</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .confirmation-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .confirmation-card {
+      background: rgba(0, 0, 0, 0.9);
+      border-radius: 12px;
+      padding: 60px 40px;
+      box-shadow: var(--red-glow);
+      border: 2px solid rgba(255, 0, 0, 0.5);
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .success-icon {
+      font-size: 80px;
+      color: var(--success);
+      margin-bottom: 30px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    .confirmation-title {
+      color: white;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: var(--red-glow);
+    }
+
+    .confirmation-subtitle {
+      color: #cccccc;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .price-summary {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 25px;
+      margin: 30px 0;
+      border: 1px solid rgba(255, 0, 0, 0.3);
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .price-final {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--success);
+      text-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+    }
+
+    .next-steps {
+      text-align: left;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 25px;
+      margin-top: 30px;
+    }
+
+    .next-steps h4 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    .next-steps ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .next-steps li {
+      padding: 10px 0;
+      color: #cccccc;
+      font-size: 15px;
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .next-steps li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .back-btn {
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .confirmation-card {
+        padding: 40px 25px;
+        margin: 20px;
+      }
+
+      .confirmation-title {
+        font-size: 28px;
+      }
+
+      .price-final {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="/" class="logo">⚡ Half Price Hub</a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/orders.html" class="active">Half-Price Orders</a></li>
+        <li><a href="/dashboard.html">Dashboard</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="confirmation-container">
+    <div class="confirmation-card">
+      <div class="success-icon">✅</div>
+      
+      <h1 class="confirmation-title">Order Submitted Successfully!</h1>
+      <p class="confirmation-subtitle">Thank you for your order! We've received your request and will contact you within 24 hours to finalize your 50% discount.</p>
+
+      <div class="price-summary" id="priceSummary">
+        <!-- Price populated by JS -->
+      </div>
+
+      <div class="next-steps">
+        <h4>📋 What happens next:</h4>
+        <ul>
+          <li>Our team reviews your order details</li>
+          <li>We'll verify product availability and pricing</li>
+          <li>Contact you via email/Discord/phone to confirm</li>
+          <li>Process your 50% discount payment</li>
+          <li>Arrange fast delivery!</li>
+        </ul>
+      </div>
+
+      <button class="btn btn-primary back-btn" onclick="window.location.href='/orders.html'">
+        Submit Another Order
+      </button>
+      <p style="margin-top: 20px; color: #999; font-size: 14px;">
+        Need help? <a href="mailto:support@halfpricehub.com" style="color: var(--primary);">Contact support</a>
+      </p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2026 Half Price Hub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Parse URL params for price info
+    const urlParams = new URLSearchParams(window.location.search);
+    const originalPrice = urlParams.get('price') || '??';
+    const halfPrice = urlParams.get('half') || '??';
+
+    const priceSummary = document.getElementById('priceSummary');
+    if (originalPrice && halfPrice) {
+      priceSummary.innerHTML = `
+        <div class="price-row">
+          <span>Original Price:</span>
+          <span>$${originalPrice}</span>
+        </div>
+        <div class="price-row">
+          <span>Your Price (50% OFF):</span>
+          <span class="price-final">$${halfPrice}</span>
+        </div>
+        <div style="border-top: 2px solid rgba(255,255,255,0.2); padding-top: 15px; margin-top: 15px;">
+          <div class="price-row">
+            <strong>SAVINGS:</strong>
+            <strong style="color: var(--success);">$${Math.round((parseFloat(originalPrice) - parseFloat(halfPrice)) * 100) / 100}</strong>
+          </div>
+        </div>
+      `;
+    } else {
+      priceSummary.innerHTML = '<p>Price details unavailable. Check your email for full order summary.</p>';
+    }
+  </script>
+</body>
+</html>
