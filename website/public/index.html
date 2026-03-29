@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Half-Price Orders</title>
   <link rel="stylesheet" href="common.css">
+
   <style>
     .hero {
       background: linear-gradient(135deg, #000000 0%, #1a0000 50%, #000000 100%);
@@ -142,148 +143,98 @@
       color: #cccccc;
       line-height: 1.6;
     }
+
+    .brands-slider {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      margin: 40px 0;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 0, 0, 0.3);
+    }
+
+    .brands-container {
+      display: flex;
+      gap: 30px;
+      animation: scroll 25s linear infinite;
+    }
+
+    .brands-container img {
+      height: 50px;
+      width: auto;
+      opacity: 0.95;
+      filter: brightness(0) invert(1);
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
   </style>
 </head>
+
 <body>
+
   <!-- Navigation -->
   <nav class="navbar">
     <div class="navbar-content">
-      <a href="/" class="logo">⚡ Half Price Hub</a>
+
+      <a href="index.html" class="logo">⚡ Half Price Hub</a>
+
       <ul class="nav-links">
-        <li><a href="/" class="active">Home</a></li>
-        <li><a href="/orders.html">Half Price Orders</a></li>
-        <li><a href="/dashboard.html">Dashboard</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="orders.html">Half Price Orders</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
       </ul>
+
     </div>
   </nav>
 
-
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
     <div class="container">
+
       <h1>Welcome to Half Price Hub</h1>
-      
 
-      <!-- Brand Slider -->
       <div class="brands-slider">
-
         <div class="brands-container">
 
+          <img src="logos/amazon.png" alt="Amazon">
+          <img src="logos/apple.png" alt="Apple">
+          <img src="logos/asos.png" alt="ASOS">
+          <img src="logos/end.png" alt="End">
+          <img src="logos/flannels.png" alt="Flannels">
+          <img src="logos/footasylum.png" alt="Footasylum">
+          <img src="logos/footlocker.png" alt="Footlocker">
+          <img src="logos/goat.png" alt="GOAT">
+          <img src="logos/jdsports.png" alt="JD Sports">
+          <img src="logos/nike.png" alt="Nike">
+          <img src="logos/selfridges.png" alt="Selfridges">
+          <img src="logos/sportsdirect.png" alt="Sports Direct">
 
-
-          <!-- Local Logos Folder - White Transparent - Seamless Loop -->
-
-          <img src="/logos/amazon.png" alt="Amazon">
-          <img src="/logos/apple.png" alt="Apple">
-          <img src="/logos/asos.png" alt="ASOS">
-          <img src="/logos/end.png" alt="End">
-          <img src="/logos/flannels.png" alt="Flannels">
-          <img src="/logos/footasylum.png" alt="Footasylum">
-          <img src="/logos/footlocker.png" alt="Footlocker">
-          <img src="/logos/goat.png" alt="GOAT">
-          <img src="/logos/jdsports.png" alt="JD Sports">
-          <img src="/logos/nike.png" alt="Nike">
-          <img src="/logos/selfridges.png" alt="Selfridges">
-          <img src="/logos/sportsdirect.png" alt="Sports Direct">
-          <!-- Exact REPEAT for seamless loop -->
-          <img src="/logos/amazon.png" alt="Amazon">
-          <img src="/logos/apple.png" alt="Apple">
-          <img src="/logos/asos.png" alt="ASOS">
-          <img src="/logos/end.png" alt="End">
-          <img src="/logos/flannels.png" alt="Flannels">
-          <img src="/logos/footasylum.png" alt="Footasylum">
-          <img src="/logos/footlocker.png" alt="Footlocker">
-          <img src="/logos/goat.png" alt="GOAT">
-          <img src="/logos/jdsports.png" alt="JD Sports">
-          <img src="/logos/nike.png" alt="Nike">
-          <img src="/logos/selfridges.png" alt="Selfridges">
-          <img src="/logos/sportsdirect.png" alt="Sports Direct">
-
+          <!-- loop repeat -->
+          <img src="logos/amazon.png" alt="Amazon">
+          <img src="logos/apple.png" alt="Apple">
+          <img src="logos/asos.png" alt="ASOS">
+          <img src="logos/end.png" alt="End">
+          <img src="logos/flannels.png" alt="Flannels">
+          <img src="logos/footasylum.png" alt="Footasylum">
+          <img src="logos/footlocker.png" alt="Footlocker">
+          <img src="logos/goat.png" alt="GOAT">
+          <img src="logos/jdsports.png" alt="JD Sports">
+          <img src="logos/nike.png" alt="Nike">
+          <img src="logos/selfridges.png" alt="Selfridges">
+          <img src="logos/sportsdirect.png" alt="Sports Direct">
 
         </div>
-
-
-        </div>
-
       </div>
 
-      
-      <style>
-        .brands-slider {
-          background: rgba(0, 0, 0, 0.7);
-          backdrop-filter: blur(10px);
-          padding: 20px 0;
-          margin: 40px 0;
-          overflow: hidden;
-          border-radius: 12px;
-          border: 1px solid rgba(255, 0, 0, 0.3);
-        }
-        
-
-        .brands-container {
-          display: flex;
-          animation: scroll 20s linear infinite;
-          gap: 30px;
-        }
-
-        
-
-        /* No pause - continuous scroll */
-        /* .brands-container:hover {
-          animation-play-state: paused;
-        } */
-        
-
-
-
-
-        .brands-container img {
-          height: 50px;
-          max-height: 50px;
-          width: auto;
-          opacity: 0.95;
-          transition: all 0.3s ease;
-          filter: brightness(0) invert(1); /* Force white */
-        }
-
-        
-
-        .brands-container img:hover {
-          transform: scale(1.1);
-          filter: brightness(0) invert(1) drop-shadow(0 4px 12px rgba(255,0,0,0.6));
-        }
-
-
-
-        
-
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        
-        /* Ensure infinite loop */
-        .brands-container {
-          animation: scroll 25s linear infinite;
-        }
-        
-
-        @media (max-width: 768px) {
-          .brands-container {
-            gap: 20px;
-          }
-          
-          .brands-container img {
-            height: 35px;
-          }
-        }
-
-      </style>
-
       <p>Get any product at 50% off! Submit your order and we'll contact you to finalize the deal.</p>
+
       <div class="hero-buttons">
-        <a href="/orders.html" class="btn btn-primary">📦 Order Half Price Items</a>
-        <a href="/dashboard.html" class="btn btn-secondary">📊 View Dashboard</a>
+        <a href="orders.html" class="btn btn-primary">📦 Order Half Price Items</a>
+        <a href="dashboard.html" class="btn btn-secondary">📊 View Dashboard</a>
       </div>
 
       <div class="stats">
@@ -291,78 +242,70 @@
           <div class="stat-number" id="visitorCount">0</div>
           <div class="stat-label">Visitors Today</div>
         </div>
+
         <div class="stat-card">
           <div class="stat-number">50%</div>
           <div class="stat-label">Savings</div>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- Features Section -->
+  <!-- Features -->
   <section class="section">
     <div class="container">
       <h2 class="section-title">✨ What We Offer</h2>
+
       <div class="features-grid">
+
         <div class="feature-card">
           <div class="feature-icon">🛍️</div>
           <div class="feature-title">Half-Price Orders</div>
-          <div class="feature-desc">Submit any product link and get it at 50% off! We'll contact you to arrange the discounted purchase.</div>
+          <div class="feature-desc">Submit any product link and get it at 50% off!</div>
         </div>
+
         <div class="feature-card">
           <div class="feature-icon">📍</div>
           <div class="feature-title">Address Autocomplete</div>
-          <div class="feature-desc">Smart address suggestions powered by OpenStreetMap - no API keys needed!</div>
+          <div class="feature-desc">Smart address suggestions powered by OpenStreetMap</div>
         </div>
+
         <div class="feature-card">
           <div class="feature-icon">🌍</div>
           <div class="feature-title">Visitor Tracking</div>
-          <div class="feature-desc">See your IP, location, and country with flag display on the dashboard</div>
+          <div class="feature-desc">See your IP and location info</div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <div class="feature-title">Lightning Fast</div>
-          <div class="feature-desc">Optimized performance with local backend processing and minimal external requests</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">💯</div>
-          <div class="feature-title">100% Free</div>
-          <div class="feature-desc">All features are completely free - no subscriptions or hidden costs</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <section class="section" style="background: rgba(0,0,0,0.6);">
-    <div class="container" style="text-align: center;">
-      <p style="color: #ffcccc; margin-bottom: 10px;">Discord Webhook (owner only, password protected)</p>
-      <button id="webhookTestBtn" class="btn btn-secondary" style="margin-bottom: 10px;">Send Webhook Test</button>
-      <div id="webhookStatus" style="color: #f1f1f1; font-size: 14px;">Enter password <strong>meow</strong> when prompted.</div>
+      </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="footer-content">
+
       <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/orders.html">Orders</a>
-        <a href="/dashboard.html">Dashboard</a>
-        <a href="/privacy.html">Privacy</a>
+        <a href="index.html">Home</a>
+        <a href="orders.html">Orders</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="privacy.html">Privacy</a>
       </div>
-      <p>&copy; 2026 Half Price Hub. All rights reserved. Built with ❤️</p>
+
+      <p>© 2026 Half Price Hub</p>
+
     </div>
   </footer>
 
   <script src="script.js"></script>
+
   <script>
-    // Load visitor count
-    fetch('/api/stats')
+    fetch('api/stats')
       .then(r => r.json())
       .then(data => {
         document.getElementById('visitorCount').textContent = data.visitorsToday || 0;
       })
-      .catch(err => console.log('Stats unavailable'));
+      .catch(() => {});
   </script>
+
 </body>
 </html>
